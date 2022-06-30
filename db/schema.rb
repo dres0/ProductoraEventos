@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_30_040205) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_30_040336) do
+  create_table "conciertos", force: :cascade do |t|
+    t.string "lugar"
+    t.date "fecha"
+    t.integer "asistentes"
+    t.integer "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_conciertos_on_group_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "nombre"
     t.integer "integrantes"
@@ -22,4 +32,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_30_040205) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "conciertos", "groups"
 end

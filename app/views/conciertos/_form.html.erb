@@ -1,0 +1,37 @@
+<%= form_with(model: concierto) do |form| %>
+  <% if concierto.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(concierto.errors.count, "error") %> prohibited this concierto from being saved:</h2>
+
+      <ul>
+        <% concierto.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :lugar, style: "display: block" %>
+    <%= form.text_field :lugar %>
+  </div>
+
+  <div>
+    <%= form.label :fecha, style: "display: block" %>
+    <%= form.date_field :fecha %>
+  </div>
+
+  <div>
+    <%= form.label :asistentes, style: "display: block" %>
+    <%= form.number_field :asistentes %>
+  </div>
+
+  <div>
+    <%= form.label :group_id, style: "display: block" %>
+    <%= form.text_field :group_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
